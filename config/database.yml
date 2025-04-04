@@ -18,6 +18,12 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # Connect on a TCP socket
+  host: <%= ENV['DATABASE_HOST'] || 'localhost'%>
+  port: <%= ENV['DATABASE_PORT'] || '5433' %>
+  # Authentication
+  username: <%= ENV['DATABASE_USERNAME'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || '1234' %>
 
 development:
   <<: *default
