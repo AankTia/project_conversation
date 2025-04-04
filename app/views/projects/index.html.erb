@@ -1,22 +1,30 @@
-<h1>Projects</h1>
+<div class="card-header bg-primary text-white">
+    <h1>Projects</h1>
+</div>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Status</th>
-        <th>-</th>
-    </tr>
-    <% if @projects.any? %>
-        <% @projects.each do |project| %>
+<div class="card-body">
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">-</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @projects.any? %>
+            <% @projects.each do |project| %>
+                <tr>
+                    <td><%= project.name %></td>
+                    <td><%= project.status %></td>
+                    <td><%= link_to "Details", project_path(project)%></td>
+                </tr>
+            <% end %>
+        <% else %>
             <tr>
-                <td><%= project.name %></td>
-                <td><%= project.status %></td>
-                <td><%= link_to "View Details", project_path(project)%></td>
+                <td>No projects.</td>
             </tr>
         <% end %>
-    <% else %>
-        <tr>
-            <td>No projects.</td>
-        </tr>
-    <% end %>
+    </tbody>
 </table>
+</div>

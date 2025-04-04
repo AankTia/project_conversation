@@ -29,6 +29,6 @@ puts 'Creating Dummy Project.'
 10.times do 
   Project.create(
     name: Faker::Appliance.brand,
-    status: 'todo'
+    status: 'Not Started'
   )
 end
