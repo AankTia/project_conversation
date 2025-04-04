@@ -1,0 +1,65 @@
+.project-details {
+    margin-bottom: 2rem;
+    }
+    
+    .project-status {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    
+    .status-form {
+    display: inline-block;
+    margin-left: 1rem;
+    }
+    }
+    
+    .activity-list {
+    margin: 1rem 0;
+    
+    .activity-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    
+        .activity-meta {
+          font-size: 0.9rem;
+          color: #666;
+          margin-bottom: 0.5rem;
+    
+          .activity-user {
+            font-weight: bold;
+          }
+    
+          .activity-time {
+            margin-left: 0.5rem;
+          }
+        }
+    
+        .activity-comment {
+          background-color: #fff;
+          padding: 0.5rem;
+          border-radius: 4px;
+        }
+    
+        .activity-status-change {
+          font-style: italic;
+          color: #555;
+        }
+    
+    }
+    }
+    
+    .add-comment {
+    margin-top: 2rem;
+    
+    textarea {
+    width: 100%;
+    padding: 0.5rem;
+    }
+    
+    .actions {
+    margin-top: 0.5rem;
+    }
+    }
