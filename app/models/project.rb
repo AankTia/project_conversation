@@ -8,7 +8,7 @@ class Project < ApplicationRecord
   def change_status(user, new_status)
     old_status = status
     update(status: new_status)
-    
+
     activities.create(
       user: user,
       activity_type: 'status_change',
