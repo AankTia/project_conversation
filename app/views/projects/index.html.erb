@@ -1,2 +1,22 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<h1>Projects</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>-</th>
+    </tr>
+    <% if @projects.any? %>
+        <% @projects.each do |project| %>
+            <tr>
+                <td><%= project.name %></td>
+                <td><%= project.status %></td>
+                <td><%= link_to "View Details", project_path(project)%></td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr>
+            <td>No projects.</td>
+        </tr>
+    <% end %>
+</table>
