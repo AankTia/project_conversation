@@ -20,8 +20,8 @@
     <% @activities.each do |activity| %>
       <div class="activity-item">
         <div class="activity-meta">
-          <span class="activity-user"><%= activity.user.first_name %></span>
-          <span class="activity-time"><%= activity.user.first_name %> <%= time_ago_in_words(activity.created_at) %> ago</span>
+          <span class="activity-user"><%= activity.user.fullname %></span>
+          <span class="activity-time"><%= time_ago_in_words(activity.created_at) %> ago</span>
         </div>
         
         <% if activity.activity_type == 'comment' %>
