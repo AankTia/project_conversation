@@ -12,7 +12,13 @@ require 'factory_bot_rails'
 require 'faker'
 
 puts 'Creating Default User.'
-FactoryBot.create(:user)
+# FactoryBot.create(:user)
+User.create(
+    first_name: "Tia",
+    last_name: "Widi",
+    email: "tiawidi@mail.com",
+    password: 'password'
+  )
 
 
 puts 'Creating Dummy User.'
@@ -27,8 +33,19 @@ end
 
 puts 'Creating Dummy Project.'
 10.times do 
-  Project.create(
+  project = Project.create(
     name: Faker::Appliance.brand,
     status: 'Not Started'
   )
+
+  project.change_status(User.all.sample, 'In Progress')
+  project.add_comment(User.all.sample, Faker::Marketing.buzzwords)
+  project.add_comment(User.all.sample, Faker::Marketing.buzzwords)
+  project.add_comment(User.all.sample, Faker::Marketing.buzzwords)
+  project.change_status(User.all.sample, 'On Hold')
+  project.add_comment(User.all.sample, Faker::Marketing.buzzwords)
+  project.add_comment(User.all.sample, Faker::Marketing.buzzwords)
+  project.change_status(User.all.sample, 'In Progress')
+  project.add_comment(User.all.sample, Faker::Marketing.buzzwords)
+  project.change_status(User.all.sample, 'Completed')
 end
