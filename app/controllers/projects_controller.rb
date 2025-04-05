@@ -40,17 +40,20 @@ class ProjectsController < ApplicationController
         format.turbo_stream
       end
     else
-      render json: { errors: @entry.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @activity.errors.full_messages }, status: :unprocessable_entity
     end
     # redirect_to @project, notice: 'Comment was successfully added.'
   end
   
   def change_status
-    @project.change_status(current_user, params[:status])
-    @activity = @project.activities.last
-    respond_to do |format|
-      format.html { redirect_to @project }
-      format.turbo_stream
+    if @project.change_status(current_user, params[:status])
+      @activity = @project.activities.last
+      respond_to do |format|
+        format.html { redirect_to @project }
+        format.turbo_stream
+      end
+    else
+      render json: { errors: @activity.errors.full_messages }, status: :unprocessable_entity
     end
     # redirect_to @project, notice: 'Project status was successfully updated.'
   end
