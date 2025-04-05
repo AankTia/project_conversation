@@ -3,6 +3,10 @@
 </div>
 
 <div class="card-body">
+  <div class="row mb-3">
+      <%= link_to "Edit", edit_project_path(@project) %>
+  </div>
+
   <div class="project-details">
     <h1><%= @project.name %></h1>
     <p><%= @project.description %></p>

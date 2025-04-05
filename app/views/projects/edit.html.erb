@@ -1,2 +1,31 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<div class="card-header bg-primary text-white">
+  <h1>Edit Projects</h1>
+</div>
+
+<div class="card-body">
+  <div class="row mb-3">
+      <%= link_to "Back to Project", project_path(@project) %>
+  </div>
+
+    <%= form_with model: @project, local: true do |form| %>
+        <% if @project.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@project.errors.count, "error") %> prohibited this post from being saved:</h2>
+                <ul>
+                    <% @project.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+        <div class="field">
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+        </div>
+
+        <div class="actions mt-3">
+            <%= form.submit %>
+        </div>
+    <% end %>
+</div>
