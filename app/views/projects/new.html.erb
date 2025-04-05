@@ -1,2 +1,11 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<div class="card-header bg-primary text-white">
+    <h4>New Project</h4>
+</div>
+
+<div class="card-body">
+    <div class="row mb-3">
+        <%= link_to "Back to Projects", projects_path %>
+    </div>
+
+    <%= render 'form', project: @project %>
+</div>

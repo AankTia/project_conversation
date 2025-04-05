@@ -3,28 +3,31 @@
 </div>
 
 <div class="card-body">
-    <table class="table">
-    <thead>
-        <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Status</th>
-        <th scope="col">-</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% if @projects.any? %>
-            <% @projects.each do |project| %>
+    <%= link_to "New", new_project_path %>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">-</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if @projects.any? %>
+                <% @projects.each do |project| %>
+                    <tr>
+                        <td><%= project.name %></td>
+                        <td><%= project.status %></td>
+                        <td><%= link_to "Details", project_path(project)%></td>
+                    </tr>
+                <% end %>
+            <% else %>
                 <tr>
-                    <td><%= project.name %></td>
-                    <td><%= project.status %></td>
-                    <td><%= link_to "Details", project_path(project)%></td>
+                    <td>No projects.</td>
                 </tr>
             <% end %>
-        <% else %>
-            <tr>
-                <td>No projects.</td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+    <%= paginate @projects %>
 </div>

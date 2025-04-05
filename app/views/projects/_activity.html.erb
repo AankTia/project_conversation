@@ -1,0 +1,16 @@
+<div class="activity-item">
+    <div class="activity-meta">
+    <span class="activity-user"><%= activity.user.fullname %></span>
+    <span class="activity-time"><%= time_ago_in_words(activity.created_at) %> ago, at <%= activity.created_at.strftime("%b %d, %Y %H:%M") %></span>
+    </div>
+    
+    <% if activity.activity_type == 'comment' %>
+    <div class="activity-comment">
+        <%= simple_format(activity.content) %>
+    </div>
+    <% else %>
+    <div class="activity-status-change">
+        Changed status: <%= activity.status_change %>
+    </div>
+    <% end %>
+</div>
