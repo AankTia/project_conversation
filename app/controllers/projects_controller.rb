@@ -32,13 +32,27 @@ class ProjectsController < ApplicationController
   end
 
   def add_comment
-    @project.add_comment(current_user, params[:content])
-    redirect_to @project, notice: 'Comment was successfully added.'
+    if @project.add_comment(current_user, params[:content])
+      @activity = @project.activities.last
+  
+      respond_to do |format|
+        format.html { redirect_to @project }
+        format.turbo_stream
+      end
+    else
+      render json: { errors: @entry.errors.full_messages }, status: :unprocessable_entity
+    end
+    # redirect_to @project, notice: 'Comment was successfully added.'
   end
   
   def change_status
     @project.change_status(current_user, params[:status])
-    redirect_to @project, notice: 'Project status was successfully updated.'
+    @activity = @project.activities.last
+    respond_to do |format|
+      format.html { redirect_to @project }
+      format.turbo_stream
+    end
+    # redirect_to @project, notice: 'Project status was successfully updated.'
   end
 
   private

@@ -1,4 +1,12 @@
 class Activity < ApplicationRecord
+
+  after_create_commit do
+    broadcast_append_to "project_#{project_id}_activity",
+                        target: "activity-list",
+                        partial: "projects/activity",
+                        locals: { activity: self }
+  end
+
   belongs_to :project
   belongs_to :user
 
