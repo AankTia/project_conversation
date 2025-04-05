@@ -14,5 +14,5 @@ class Activity < ApplicationRecord
   validates :content, presence: true, if: -> { activity_type == 'comment' }
   validates :status_change, presence: true, if: -> { activity_type == 'status_change' }
 
-  default_scope { order(created_at: :desc) }
+  default_scope { order(created_at: :asc) }
 end

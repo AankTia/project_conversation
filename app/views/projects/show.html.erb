@@ -27,18 +27,20 @@
     
     <hr>
     <% if current_user %> <!-- Only show if user is logged in -->
-      <div class="add-comment">
-        <h3>Add Comment</h3>
-        <%= form_with url: add_comment_project_path(@project), method: :post do |form| %>
-          <div class="field">
-            <%= form.text_area :content, rows: 4, placeholder: 'Write your comment here...' %>
-          </div>
-          
-          <div class="actions">
-            <%= form.submit "Post Comment" %>
-          </div>
-        <% end %>
-      </div>
+      <%= turbo_frame_tag "new_comment" do %>
+        <div class="add-comment">
+          <h3>Add Comment</h3>
+          <%= form_with url: add_comment_project_path(@project), method: :post, local: false do |form| %>
+            <div class="field">
+              <%= form.text_area :content, rows: 4, placeholder: 'Write your comment here...' %>
+            </div>
+            
+            <div class="actions">
+              <%= form.submit "Post Comment" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
