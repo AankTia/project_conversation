@@ -1,8 +1,14 @@
 class Project < ApplicationRecord
+  before_validation :initiate_status, if: :new_record?
+
   has_many :activities, dependent: :destroy
 
   validates :name, presence: true
   validates :status, presence: true
+
+  def initiate_status
+    self.status = 'Not Started'
+  end
 
   # change the status of the project
   def change_status(user, new_status)
