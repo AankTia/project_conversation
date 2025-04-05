@@ -3,7 +3,8 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :add_comment, :change_status]
 
   def index
-    @projects = Project.all
+    # @projects = Project.all
+    @projects = Project.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # Default - renders index.html.erb
